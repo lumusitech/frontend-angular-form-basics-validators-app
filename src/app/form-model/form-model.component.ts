@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { debounceTime } from 'rxjs/operators'
+
 @Component({
   selector: 'app-form-model',
   templateUrl: './form-model.component.html',
@@ -36,6 +38,8 @@ export class FormModelComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const emailValidator = this.form.controls.email;
+    emailValidator.valueChanges.pipe(debounceTime(500)).subscribe(values => console.log(values));
   }
 
   onlyLettersValidator(form: any) {
