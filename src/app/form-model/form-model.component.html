@@ -1,0 +1,99 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>Nombre</label>
+    <input type="text" class="form-control" formControlName="name" />
+    <p
+      class="text-danger ml-2 pt-1"
+      *ngIf="form.controls.name.errors?.required && form.controls.name.touched"
+    >
+      Este dato es requerido
+    </p>
+  </div>
+
+  <p
+    class="text-danger"
+    *ngIf="form.controls.name.errors?.onlyletters && form.controls.name.touched"
+  >
+    Solamente se admiten letras y espacios
+  </p>
+
+  <!-- ============================================================== -->
+  <div class="form-group">
+    <label>Apellido</label>
+    <input type="text" class="form-control" formControlName="lastname" />
+    <p
+      class="text-danger ml-2 pt-1"
+      *ngIf="
+        form.controls.lastname.errors?.required &&
+        form.controls.lastname.touched
+      "
+    >
+      El apellido es requerido
+    </p>
+
+    <p
+      class="text-danger"
+      *ngIf="
+        form.controls.lastname.errors?.onlyletters &&
+        form.controls.lastname.touched
+      "
+    >
+      Solamente se admiten letras y espacios
+    </p>
+  </div>
+
+  <!-- ============================================================== -->
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" formControlName="email" />
+    <p
+      class="text-danger"
+      *ngIf="
+        form.controls.email.errors?.required && form.controls.email.touched
+      "
+    >
+      El email es requerido
+    </p>
+  </div>
+
+  <!-- ============================================================== -->
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" formControlName="password" />
+    <p
+      class="text-danger"
+      *ngIf="
+        form.controls.password.errors?.required &&
+        form.controls.password.touched
+      "
+    >
+      El password es requerido
+    </p>
+  </div>
+  <!-- ============================================================== -->
+  <div class="form-group">
+    <label>confirmar password</label>
+    <input
+      type="password"
+      class="form-control"
+      formControlName="repeat_password"
+    />
+    <p
+      class="text-danger"
+      *ngIf="
+        form.controls.repeat_password.errors?.required &&
+        form.controls.repeat_password.touched
+      "
+    >
+      La confirmación del password es requerida
+    </p>
+  </div>
+  <!-- ============================================================== -->
+  <input
+    type="submit"
+    value="enviar"
+    class="btn btn-block btn-danger"
+    [disabled]="form.invalid"
+    title="Debe completar los datos requeridos para habilitar el botón"
+  />
+</form>
