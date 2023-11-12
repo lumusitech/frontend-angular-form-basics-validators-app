@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { debounceTime } from 'rxjs/operators'
 
@@ -10,28 +10,28 @@ import { debounceTime } from 'rxjs/operators'
 })
 export class FormModelComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   constructor() {
-    this.form = new FormGroup({
-      name: new FormControl("", [
+    this.form = new UntypedFormGroup({
+      name: new UntypedFormControl("", [
         Validators.required,
         this.onlyLettersValidator
       ]),
 
-      lastname: new FormControl("", [
+      lastname: new UntypedFormControl("", [
         Validators.required,
         this.onlyLettersValidator
       ]),
 
-      email: new FormControl("", [
+      email: new UntypedFormControl("", [
         Validators.required
       ]),
 
-      password: new FormControl("", [
+      password: new UntypedFormControl("", [
         Validators.required
       ]),
-      repeat_password: new FormControl("", [
+      repeat_password: new UntypedFormControl("", [
         Validators.required
       ])
     });
@@ -50,26 +50,26 @@ export class FormModelComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form.value);
-    this.form = new FormGroup({
-      name: new FormControl("", [
+    this.form = new UntypedFormGroup({
+      name: new UntypedFormControl("", [
         Validators.required,
         this.onlyLettersValidator
       ]),
 
-      lastname: new FormControl("", [
+      lastname: new UntypedFormControl("", [
         Validators.required,
         this.onlyLettersValidator
       ]),
 
-      email: new FormControl("", [
+      email: new UntypedFormControl("", [
         Validators.required
       ]),
 
-      password: new FormControl("", [
+      password: new UntypedFormControl("", [
         Validators.required
       ]),
 
-      repeat_password: new FormControl("", [
+      repeat_password: new UntypedFormControl("", [
         Validators.required
       ])
     });
